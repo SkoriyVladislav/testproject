@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>FileVault Package Properties</comment>
+<entry key="buildCount">1</entry>
+<entry key="version">1.0-SNAPSHOT-TP</entry>
+<entry key="dependencies" />
+<entry key="packageFormatVersion">2</entry>
+<entry key="description">TestProject Package</entry>
+<entry key="group">Exadel</entry>
+<entry key="name">testproject-content</entry>
+<entry key="path">/etc/packages/Exadel/testproject-content-1.0-SNAPSHOT-TP.zip</entry>
+</properties>

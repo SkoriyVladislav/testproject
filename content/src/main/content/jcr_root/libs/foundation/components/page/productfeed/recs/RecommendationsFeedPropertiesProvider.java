@@ -93,7 +93,7 @@ public class RecommendationsFeedPropertiesProvider implements Use {
         rootPage = (Page) bindings.get("currentPage");
 
         feedType = FeedType.fromSelectors(request.getRequestPathInfo().getSelectors());
-        LOGGER.debug("Feed type is ", feedType.toString());
+        LOGGER.debug("News type is ", feedType.toString());
 
         // retrieve the cloud configuration so we can write the lastgenerated timestamp
         ValueMap vm = rootPage.getProperties();

@@ -503,7 +503,7 @@ public class Rewriter implements DocumentHandler {
     }
 
     /**
-     * Feed HTML into received over a {@link java.net.URLConnection} to an
+     * News HTML into received over a {@link java.net.URLConnection} to an
      * HTML parser.
      * @param in input stream
      * @param contentType preferred content type

@@ -25,7 +25,9 @@ public class Controller extends SlingAllMethodsServlet {
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws IOException {
-        response.setHeader("Content-Type", "application/json");
+        response.setStatus(200);
+        response.getWriter().print("STR");
+        /*response.setHeader("Content-Type", "application/json");
         //response.getWriter().print(“{\”coming\” : \”soon\”}”);
         //String[] keys = repository.getDescriptorKeys();
         JSONObject jsonObject = new JSONObject();
@@ -38,7 +40,7 @@ public class Controller extends SlingAllMethodsServlet {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        response.getWriter().print(jsonObject.toString());
+        response.getWriter().print(jsonObject.toString());*/
     }
 }
 

@@ -13,7 +13,7 @@ const concat = require('gulp-concat');
 const minifyCss = require('gulp-clean-css');
 const gzip = require('gulp-gzip');
 const sourcemaps = require('gulp-sourcemaps');
-const del = require('del');
+const clean = require('gulp-clean');
 
 
 const nodemon = require('gulp-nodemon');
@@ -34,8 +34,9 @@ function styles(outputDir) {
 }
 
 
-function clean(outputDir) {
-  return del(outputDir);
+function cleanTask() {
+  return  gulp.src('public', {read: false, allowEmpty: true})
+      .pipe(clean());
 }
 
 function browserSyncTask() {
@@ -70,8 +71,8 @@ function watch() {
   gulp.watch(INPUT_BUNDLE + '/*.ts', { usePolling: true }, gulp.series(devWebpackTask));
 }
 
-gulp.task('devBuild', gulp.series(() => clean(paths.OUTPUT_DIR), gulp.parallel(() => styles(paths.OUTPUT_DIR), devWebpackTask)));
-gulp.task('prodBuild', gulp.series(() => clean(paths.OUTPUT_DIR_PROD), gulp.parallel(() => styles(paths.OUTPUT_DIR_PROD), prodWebpackTask)));
+gulp.task('devBuild', gulp.series(cleanTask, gulp.parallel(() => styles(paths.OUTPUT_DIR), devWebpackTask)));
+gulp.task('prodBuild', gulp.series(cleanTask), gulp.parallel(() => styles(paths.OUTPUT_DIR_PROD), prodWebpackTask));
 
 gulp.task('devWebpackTask', devWebpackTask);
 gulp.task('default',

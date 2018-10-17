@@ -2,7 +2,8 @@ package com.aem.exadel.service.impl;
 
 import com.aem.exadel.entity.News;
 import com.aem.exadel.service.RSSReader;
-import jdk.nashorn.internal.ir.annotations.Reference;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Service;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -16,6 +17,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component(immediate = true, metatype = true, label = "RSS reader")
+@Service(value = RSSReader.class)
 public class RSSReaderImpl implements RSSReader {
     private static final String TITLE = "title";
     private static final String DESCRIPTION = "description";
@@ -27,6 +30,14 @@ public class RSSReaderImpl implements RSSReader {
     private static final String SOURCE = "source";
 
     private URL url;
+
+    public RSSReaderImpl() {
+        try {
+            this.url = new URL("https://www.nasa.gov/rss/dyn/breaking_news.rss");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public RSSReaderImpl(String feedUrl) {
         try {

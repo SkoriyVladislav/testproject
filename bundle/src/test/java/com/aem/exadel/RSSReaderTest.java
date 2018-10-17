@@ -11,7 +11,7 @@ import java.util.List;
 public class RSSReaderTest {
     @Test
     public void readTest(){
-        RSSReader rssReader = new RSSReaderImpl("https://www.nasa.gov/rss/dyn/breaking_news.rss");
+        RSSReader rssReader = new RSSReaderImpl();
         List<News> newsList = rssReader.readFeed();
         assertEquals(10, newsList.size());
         for (News news : newsList) {

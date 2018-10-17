@@ -12,6 +12,18 @@
 <<<<<<< .mine
 <<<<<<< .mine
 <<<<<<< .mine
+<<<<<<< .mine
+<<<<<<< .mine
+<<<<<<< .mine
+    allowedParents="*/*parsys"/>
+>>>>>>> .theirs
+=======
+    allowedParents="*/*parsys"/>
+>>>>>>> .theirs
+=======
+    allowedParents="*/*parsys"/>
+>>>>>>> .theirs
+=======
     allowedParents="*/*parsys"/>
 >>>>>>> .theirs
 =======

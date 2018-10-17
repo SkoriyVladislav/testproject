@@ -72,7 +72,7 @@ function watch() {
 }
 
 gulp.task('devBuild', gulp.series(cleanTask, gulp.parallel(() => styles(paths.OUTPUT_DIR), devWebpackTask)));
-gulp.task('prodBuild', gulp.series(cleanTask), gulp.parallel(() => styles(paths.OUTPUT_DIR_PROD), prodWebpackTask));
+gulp.task('prodBuild', gulp.series(cleanTask, gulp.parallel(() => styles(paths.OUTPUT_DIR_PROD), prodWebpackTask)));
 
 gulp.task('devWebpackTask', devWebpackTask);
 gulp.task('default',

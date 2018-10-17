@@ -1,0 +1,22 @@
+{
+  "extends": "tslint:recommended",
+//  "rulesDirectory": ["path/to/custom/rules/directory/", "another/path/"],
+  "rules": {
+    "quotemark": false,
+    "adjacent-overload-signatures": true,
+    "trailing-comma": false,
+    "new-parens": true,
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-conditional-assignment": true,
+    "no-consecutive-blank-lines": false,
+    "no-console": true
+  }
+//  "allowJs": true,
+//  "jsRules": {
+//    "max-line-length": {
+//      "options": [120]
+//    },
+//      "no-empty": true
+//  }
+}

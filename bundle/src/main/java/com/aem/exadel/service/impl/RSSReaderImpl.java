@@ -2,8 +2,7 @@ package com.aem.exadel.service.impl;
 
 import com.aem.exadel.entity.News;
 import com.aem.exadel.service.RSSReader;
-import org.apache.felix.scr.annotations.Component;
-import org.apache.felix.scr.annotations.Service;
+import org.osgi.service.component.annotations.Component;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -17,8 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(immediate = true, metatype = true, label = "RSS reader")
-@Service(value = RSSReader.class)
+@Component(immediate = true)
 public class RSSReaderImpl implements RSSReader {
     private static final String TITLE = "title";
     private static final String DESCRIPTION = "description";

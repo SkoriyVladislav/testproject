@@ -9,10 +9,10 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.sling.SlingFilter;
 import org.apache.felix.scr.annotations.sling.SlingFilterScope;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 * Simple servlet filter component that logs incoming requests.
 */
 @SlingFilter(generateComponent = false, generateService = true, order = -700, scope = SlingFilterScope.REQUEST)
-@Component(immediate = true, metatype = false)
+@Component(immediate = true)
 public class LoggingFilter implements Filter {
     
     private Logger logger = LoggerFactory.getLogger(LoggingFilter.class);

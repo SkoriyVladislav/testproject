@@ -21,8 +21,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.osgi:org.osgi.compendium:4.2.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.osgi:org.osgi.core:4.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.osgi:org.osgi.compendium:unknown" level="project" />
+    <orderEntry type="library" name="Maven: org.osgi:org.osgi.core:unknown" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.felix:org.apache.felix.scr.annotations:1.6.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: biz.aQute:bndlib:1.43.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />

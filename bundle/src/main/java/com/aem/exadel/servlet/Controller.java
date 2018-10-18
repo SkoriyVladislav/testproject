@@ -1,23 +1,23 @@
 package com.aem.exadel.servlet;
 
-import com.aem.exadel.entity.News;
-import com.aem.exadel.service.RSSReader;
-import com.aem.exadel.service.impl.RSSReaderImpl;
-import org.apache.felix.scr.annotations.sling.SlingServlet;
-import org.apache.felix.scr.annotations.Reference;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
-import org.apache.sling.commons.json.JSONException;
-import org.apache.sling.commons.json.JSONObject;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 import javax.jcr.Repository;
+import javax.servlet.Servlet;
 import java.io.IOException;
-import java.util.List;
 
 
-@SlingServlet(paths = "/bin/company/repo", methods = HttpConstants.METHOD_GET, metatype = true)
+@Component(service = Servlet.class, immediate = true,
+        property = {
+                "sling.servlet.paths=/bin/rss",
+                "sling.servlet.methods=" + HttpConstants.METHOD_GET,
+                "sling.servlet.extensions=" + "html"
+        })
 public class Controller extends SlingAllMethodsServlet {
 
     @Reference

@@ -34,9 +34,9 @@ function styles(outputDir) {
 }
 
 
-function cleanTask() {
-    return  gulp.src(paths.OUTPUT_DIR, {read: false, allowEmpty: true})
-        .pipe(clean());
+function cleanTask(outputDir) {
+    return gulp.src(outputDir, { read: false, allowEmpty: true })
+        .pipe(clean({ force: true }));
 }
 
 function browserSyncTask() {
@@ -71,8 +71,8 @@ function watch() {
     gulp.watch(INPUT_BUNDLE + '/*.ts', { usePolling: true }, gulp.series(devWebpackTask));
 }
 
-gulp.task('devBuild', gulp.series(cleanTask, gulp.parallel(() => styles(paths.OUTPUT_DIR), devWebpackTask)));
-gulp.task('prodBuild', gulp.series(cleanTask, gulp.parallel(() => styles(paths.OUTPUT_DIR_PROD), prodWebpackTask)));
+gulp.task('devBuild', gulp.series(() => cleanTask(paths.OUTPUT_DIR), gulp.parallel(() => styles(paths.OUTPUT_DIR), devWebpackTask)));
+gulp.task('prodBuild', gulp.series(() => cleanTask(paths.OUTPUT_DIR_PROD), gulp.parallel(() => styles(paths.OUTPUT_DIR_PROD), prodWebpackTask)));
 
 gulp.task('devWebpackTask', devWebpackTask);
 gulp.task('default',

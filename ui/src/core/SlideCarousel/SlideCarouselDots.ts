@@ -8,7 +8,7 @@ class SlideCarouselDots extends HTMLElement {
         super();
     }
 
-    _onUpdate = () => this.rerender();
+    private _onUpdate = () => this.rerender();
 
     private connectedCallback() {
         this._parent = this.closest(SlideCarousel.is) as SlideCarousel;
@@ -31,7 +31,7 @@ class SlideCarouselDots extends HTMLElement {
         this.innerHTML = html;
     }
 
-    private buildDot(index:  number, isActive: boolean) {
+    private buildDot(index: number, isActive: boolean) {
         return `<span class="carousel-dot ${isActive ? 'active-dot' : ''}" data-slide-target="${index}"> </span>`;
     }
 }

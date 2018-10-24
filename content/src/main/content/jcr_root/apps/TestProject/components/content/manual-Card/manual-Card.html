@@ -1,15 +1,15 @@
 <div>
     <h1 data-sly-use.title="manual-Card.js">${title.text}</h1>
 
-    <div data-sly-use.card="com.aem.exadel.service.HeroRestComponent" data-sly-test="${heroTextObject}">
+    <div data-sly-use.cardObject="com.aem.exadel.service.HeroRestComponent" data-sly-test="${cardObject}">
 
         <h1>AEM HTL Restful example</h1>
 
-        <h3>From City: ${heroTextObject.heroTextBean.fromCity}</h3>
-        <h3>To City: ${heroTextObject.heroTextBean.toCity}</h3>
+        <h1>title: ${cardObject.manualCard.title}</h1>
+        <h3>description: ${cardObject.manualCard.description}</h3>
 
-        <h3>Distance: ${heroTextObject.heroTextBean.distance}</h3>
-        <h3>Duration: ${heroTextObject.heroTextBean.duration}</h3>
+        <h4>link: ${cardObject.manualCard.link}</h4>
+        <h5>pubDate: ${cardObject.manualCard.pubDate}</h5>
 
     </div>
 </div>

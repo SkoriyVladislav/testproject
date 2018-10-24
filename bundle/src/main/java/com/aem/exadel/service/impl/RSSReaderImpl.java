@@ -28,6 +28,7 @@ public class RSSReaderImpl implements RSSReader {
     private static final String SOURCE = "source";
 
     private URL url;
+    private List<News> news;
 
     public RSSReaderImpl() {
         try {
@@ -113,6 +114,7 @@ public class RSSReaderImpl implements RSSReader {
         } catch (XMLStreamException e) {
             throw new RuntimeException(e);
         }
+        this.news = feed;
         return feed;
     }
 
@@ -131,5 +133,13 @@ public class RSSReaderImpl implements RSSReader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<News> getNews() {
+        return news;
+    }
+
+    public void setNews(List<News> news) {
+        this.news = news;
     }
 }

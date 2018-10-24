@@ -1,0 +1,9 @@
+<div data-sly-use.article="article-content.js">
+    <h1>${article.title}</h1>
+
+    <div data-sly-resource="${'content' @ resourceType='wcm/foundation/components/parsys'}"></div>
+
+    <h3>${article.content}</h1>
+    <h5>${article.pubDate}</h1>
+
+</div>

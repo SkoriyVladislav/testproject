@@ -3,10 +3,10 @@ package com.aem.exadel.entity;
 import com.adobe.cq.sightly.WCMUsePojo;
 
 public class ManualCard extends WCMUsePojo {
-    String title;
-    String link;
-    String description;
-    String pubDate;
+    private String title;
+    private String link;
+    private String description;
+    private String pubDate;
 
     public String getTitle() {
         return title;

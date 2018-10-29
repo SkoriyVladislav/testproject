@@ -32,10 +32,10 @@ public class Controller extends SlingAllMethodsServlet {
         //String[] keys = repository.getDescriptorKeys();
         JSONObject jsonObject = new JSONObject();
         RSSReader rssReader = new RSSReaderImpl();
-        List<News> newsList = rssReader.readFeed();
+        List<DynamicCard> newsList = rssReader.readFeed();
         try {
             response.setStatus(200);
-            jsonObject.put("News", newsList);
+            jsonObject.put("DynamicCard", newsList);
             //jsonObject.put(keys[i], repository.getDescriptor(keys[i]));
         } catch (JSONException e) {
             e.printStackTrace();

@@ -1,0 +1,11 @@
+<div>
+
+    <dl data-sly-use.cardRest="com.aem.exadel.service.DynamicCardRestComponent" data-sly-list="${cardRest.news}">
+        <dd>
+            <h1>${item.title == null ? "Dynamic card" : item.title}</h1>
+            <h4>${item.link}</h4>
+            <h5>${item.pubDate}</h5>
+        </dd>
+
+    </dl>
+</div>

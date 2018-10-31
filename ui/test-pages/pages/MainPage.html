@@ -6,6 +6,11 @@
     <title>Example</title>
     <link rel="stylesheet" href="all.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script>
+        if(!window.customElements){
+            document.write('<script src="polyfill.js"><\/script>');
+        }
+    </script>
 </head>
 <body>
 {{> Header}}

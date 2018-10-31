@@ -7,7 +7,6 @@ const exphbs = require('express-hbs');
 const app = express();
 
 const partials = require('./paths/partials');
-const pathsArray = partials.pathsArray;
 
 const viewPath = path.join(__dirname, '/test-pages/pages/');
 
@@ -15,7 +14,7 @@ const viewPath = path.join(__dirname, '/test-pages/pages/');
 app.set('views', viewPath);
 app.set('view engine', 'html');
 app.engine('.html', exphbs.express4({
-    partialsDir: pathsArray
+    partialsDir: partials.pathsArray
 }));
 
 

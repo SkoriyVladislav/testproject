@@ -4,7 +4,6 @@ const devWebpackTask = require('./webpack-configs/devWebpack.config');
 const prodWebpackTask = require('./webpack-configs/prodWebpack.config');
 
 const paths = require('./paths/config-paths');
-const INPUT_BUNDLE = paths.INPUT_BUNDLE;
 const BROWSER_SYNC_RELOAD_DELAY = 500;
 
 const gulp = require('gulp');
@@ -15,13 +14,12 @@ const gzip = require('gulp-gzip');
 const sourcemaps = require('gulp-sourcemaps');
 const clean = require('gulp-clean');
 
-
 const nodemon = require('gulp-nodemon');
 const browserSync = require('browser-sync').create();
 
 
 function styles(outputDir) {
-    return gulp.src(INPUT_BUNDLE + '/*.less')
+    return gulp.src(paths.INPUT_BUNDLE + '/*.less')
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(concat('all.css'))
@@ -32,7 +30,6 @@ function styles(outputDir) {
         .pipe(gzip())
         .pipe(gulp.dest(outputDir));
 }
-
 
 function cleanTask(outputDir) {
     return gulp.src(outputDir, { read: false, allowEmpty: true })
@@ -45,6 +42,12 @@ function browserSyncTask() {
         browser: 'chrome',
         port: 8000,
     });
+}
+
+function attachJCRIdentifier(){
+    return gulp.src('aem-build/.content.xml')
+        .pipe(gulp.dest(paths.OUTPUT_DIR_PROD));
+
 }
 
 function nodemonTask(cb) {
@@ -67,12 +70,12 @@ function nodemonTask(cb) {
 }
 
 function watch() {
-    gulp.watch(INPUT_BUNDLE + '/*.less', { usePolling: true }, gulp.series(() => styles(paths.OUTPUT_DIR)));
-    gulp.watch(INPUT_BUNDLE + '/*.ts', { usePolling: true }, gulp.series(devWebpackTask));
+    gulp.watch([paths.INPUT_BUNDLE + '/*.less', paths.INPUT_CORE + '/*.less'], { usePolling: true }, gulp.series(() => styles(paths.OUTPUT_DIR)));
+    gulp.watch([paths.INPUT_BUNDLE + '/*.ts', paths.INPUT_CORE + '/*.ts'], { usePolling: true }, gulp.series(devWebpackTask));
 }
 
 gulp.task('devBuild', gulp.series(() => cleanTask(paths.OUTPUT_DIR), gulp.parallel(() => styles(paths.OUTPUT_DIR), devWebpackTask)));
-gulp.task('prodBuild', gulp.series(() => cleanTask(paths.OUTPUT_DIR_PROD), gulp.parallel(() => styles(paths.OUTPUT_DIR_PROD), prodWebpackTask)));
+gulp.task('prodBuild', gulp.series(() => cleanTask(paths.OUTPUT_DIR_PROD), attachJCRIdentifier, gulp.parallel(() => styles(paths.OUTPUT_DIR_PROD), prodWebpackTask)));
 
 gulp.task('devWebpackTask', devWebpackTask);
 gulp.task('default',

@@ -6,10 +6,13 @@ const DIR_TEST_PAGES = path.join(__dirname, '../test-pages/pages/');
 
 module.exports.pathsArray = [
     DIR_COMPONENTS + 'MainPage/Post',
-    DIR_CORE + 'Header',
-    DIR_CORE + 'Footer',
     DIR_COMPONENTS + 'MainPage/SlideCarousel',
     DIR_COMPONENTS + 'MainPage/Main',
+    DIR_COMPONENTS + 'MainPage/PopupMenu',
     DIR_COMPONENTS + 'FullPost',
+    DIR_CORE + 'Header',
+    DIR_CORE + 'Footer',
+    DIR_CORE + 'PopupMenu',
+    DIR_CORE + 'svg',
     DIR_TEST_PAGES,
 ];

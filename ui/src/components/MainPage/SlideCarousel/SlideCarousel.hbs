@@ -1,6 +1,8 @@
 <slide-carousel class="carousel-wrapper" id="carousel-1">
 
-    <button data-slide-target="prev" class="carousel-controls arrow-previous-btn"></button>
+    <button data-slide-target="prev" class="carousel-controls arrow-previous-btn">
+      {{> arrow class="svg-arrow" attribute="data-slide-target" value="prev"}}
+    </button>
 
     <div data-slide-area class="carousel-items">
 
@@ -58,7 +60,9 @@
     </div>
 
 
-    <button data-slide-target="next" class="carousel-controls arrow-next-btn"></button>
+    <button data-slide-target="next" class="carousel-controls arrow-next-btn">
+        {{> arrow class="svg-arrow" attribute="data-slide-target" value="next"}}
+    </button>
 
     <slide-carousel-dots class="carousel-dots-wrapper"></slide-carousel-dots>
 </slide-carousel>

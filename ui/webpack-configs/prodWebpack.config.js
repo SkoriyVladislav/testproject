@@ -1,7 +1,5 @@
 const path = require('path');
 const paths = require('../paths/config-paths');
-const INPUT_JS = paths.INPUT_JS;
-const OUTPUT_DIR = paths.OUTPUT_DIR;
 
 const gulp = require('gulp');
 const gzip = require('gulp-gzip');
@@ -17,7 +15,7 @@ module.exports = function () {
             bundle: './bundle',
         },
         output: {
-            path: path.join(__dirname + '/' + OUTPUT_DIR),
+            path: path.join(__dirname + '/' + paths.OUTPUT_DIR),
             filename: '[name].js',
             library: '[name]'
         },
@@ -36,7 +34,7 @@ module.exports = function () {
         },
 
     };
-    return gulp.src(INPUT_JS)
+    return gulp.src(paths.INPUT_JS)
         .pipe(named())
         .pipe(webpackStream(options))
         .pipe(gulp.dest(paths.OUTPUT_DIR_PROD))

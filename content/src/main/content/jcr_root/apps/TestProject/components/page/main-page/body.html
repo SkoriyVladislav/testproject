@@ -1,16 +1,29 @@
-<div class="wrapper row1">
-    <div data-sly-include="header.html"></div>
-  </div>
-</div>
-<div class="wrapper row0">
-  <div id="topbar" class="hoc clear"> 
-    <div data-sly-include="navigation.html"></div>
-  </div>
-</div>
-<div data-sly-include="content.html"></div>
-<div class="wrapper row4">
-    <div data-sly-include="footer.html"></div>
-</div>
-<div class="wrapper row5">
-    <div data-sly-include="copyright.html"></div>
-</div>
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright 2016 Adobe Systems Incorporated
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<div data-sly-resource="${'cloudservices' @ resourceType='cq/cloudserviceconfigs/components/servicecomponents'}" data-sly-unwrap></div>
+
+
+<sly data-sly-include="header.html"></sly>
+<!--/*<div data-sly-include="navigation.html"></div>*/-->
+
+
+<main>
+    <sly data-sly-include="content.html"></sly>
+</main>
+
+<sly data-sly-include="footer.html"></sly>
+
+<sly data-sly-include="footerlibs.html" />

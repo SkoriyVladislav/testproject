@@ -3,7 +3,28 @@
 
     <div data-sly-resource="${'content' @ resourceType='wcm/foundation/components/parsys'}"></div>
 
-    <h3>${article.content}</h1>
-    <h5>${article.pubDate}</h1>
+    <h3>${article.content}</h3>
+    <h5>${article.pubDate}</h5>
+
+    <div class="full-post-wrapper">
+        <div class="img-container">
+            <img class="post-img" src="https://pp.userapi.com/c851324/v851324429/27781/tTfDE8LXDSM.jpg"/>
+        </div>
+        <div class="full-post-container">
+
+            <sly data-sly-include="/apps/TestProject/components/content/manual-Card/manual-Card.html"></sly>
+
+            <div class="post-line"></div>
+            <ul class="group-nav-btn">
+                <li>
+                    <div class="prev-btn">Назад</div>
+                </li>
+                <li class="paging-separator">|</li>
+                <li>
+                    <div class="next-btn">Вперед</div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 </div>

@@ -4,7 +4,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "node server.js || gulp",
-    "prod": "gulp prod"
+    "prod": "gulp prod",
+    "gulp": "gulp"
   },
   "author": "",
   "license": "ISC",

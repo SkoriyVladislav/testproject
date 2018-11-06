@@ -1,7 +1,6 @@
-import PopupMenu from '../../core/PopupMenu/PopupMenu';
-import PopupTrigger from '../../core/PopupMenu/PopupTrigger';
-import SlideCarousel from '../../core/SlideCarousel/SlideCarousel';
-import SlideCarouselDots from '../../core/SlideCarousel/SlideCarouselDots';
-
-
-console.log(SlideCarousel, SlideCarouselDots, PopupMenu, PopupTrigger);
+import '../../core/PopupMenu/PopupMenu';
+import '../../core/PopupMenu/PopupTrigger';
+import '../../core/SlideCarousel/SlideCarousel';
+import '../../core/SlideCarousel/SlideCarouselDots';
+import '../MainPage/LangMenu/DropdownInput';
+import '../MainPage/LangMenu/DropdownMenu';

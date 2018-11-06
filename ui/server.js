@@ -14,7 +14,10 @@ const viewPath = path.join(__dirname, '/test-pages/pages/');
 app.set('views', viewPath);
 app.set('view engine', 'html');
 app.engine('.html', exphbs.express4({
-    partialsDir: partials.pathsArray
+    partialsDir: partials.pathsArray,
+    compiled: {
+            title: 'Title1'
+        }
 }));
 
 

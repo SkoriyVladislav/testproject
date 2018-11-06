@@ -1,10 +1,10 @@
 {
   "var1": {
-    "header": "...",
+    "title": "Title1",
     "desc": "%LOREM_IPSUM(2)%"
   },
   "var2": {
-    "header": "...",
+    "title": "Title2",
     "desc": "%LOREM_IPSUM(2)%"
   }
 }

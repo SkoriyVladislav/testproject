@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node server.js || gulp",
     "prod": "gulp prod",
-    "prod2": "gulp"
+    "gulp": "gulp"
   },
   "author": "",
   "license": "ISC",

@@ -18,7 +18,7 @@ class PopupTrigger extends HTMLElement {
         this._onActivate = this._onActivate.bind(this);
     }
 
-    private connectedCallback() {
+    public connectedCallback() {
         this._attachEvent();
     }
 
@@ -27,19 +27,23 @@ class PopupTrigger extends HTMLElement {
     }
 
     get triggerOn() {
-        return this.getAttribute('triggeron') || 'click';
+        return this.dataset.triggeron || 'click';
     }
 
     private _attachEvent() {
         if (this.triggerOn === 'click') {
             this.addEventListener('click', this._onActivate, false);
         } else {
-            this.addEventListener('click', this._onActivate, false);
+            this.addEventListener(this.triggerOn, this._onActivate, false);
         }
     }
 
     private _detachEvent() {
-        this.removeEventListener('click', this._onActivate);
+        if (this.triggerOn === 'click') {
+            this.removeEventListener('click', this._onActivate);
+        } else {
+            this.removeEventListener(this.triggerOn, this._onActivate);
+        }
     }
 
     private _onActivate() {

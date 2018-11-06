@@ -1,3 +1,24 @@
-<div>
-     Manual Card
-</div>
+
+<!--/*<div data-sly-use.cardObject="com.aem.exadel.service.ManualCardRestComponent" class="${cardObject}">
+   	<h1>${cardObject.manualCard.title == null ? "Manual card" : cardObject.manualCard.title}</h1>
+       <h3>${cardObject.manualCard.description}</h3>
+       <h4>${cardObject.manualCard.link}</h4>
+       <h5>${cardObject.manualCard.pubDate}</h5>
+       </div>*/-->
+
+<article class="post" onclick="location.href='TestPage.html';">
+    <div data-sly-use.cardObject="com.aem.exadel.service.ManualCardRestComponent" class="post-container">
+        <h1 class="post-title">${cardObject.manualCard.title == null ? "Manual card" : cardObject.manualCard.title}</h1>
+        <div class="parent-post-text">
+            <p>
+                ${cardObject.manualCard.description}
+            </p>
+            <p>&nbsp;</p>
+            <p>${cardObject.manualCard.pubDate}</p>
+            <p>&nbsp;</p>
+            <p>${cardObject.manualCard.pubDate}</p>
+            <p>&nbsp;</p>
+        </div>
+            <!--<span class="read-pull-post">Читать статью ►</span>-->
+    </div>
+</article>

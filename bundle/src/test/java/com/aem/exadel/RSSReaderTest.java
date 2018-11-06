@@ -1,6 +1,6 @@
 package com.aem.exadel;
 
-import com.aem.exadel.entity.News;
+import com.aem.exadel.entity.DynamicCard;
 import com.aem.exadel.service.RSSReader;
 import com.aem.exadel.service.impl.RSSReaderImpl;
 import org.junit.Test;
@@ -11,11 +11,11 @@ import java.util.List;
 public class RSSReaderTest {
     @Test
     public void readTest(){
-        RSSReader rssReader = new RSSReaderImpl("https://www.nasa.gov/rss/dyn/breaking_news.rss");
-        List<News> newsList = rssReader.readFeed();
-        assertEquals(10, newsList.size());
-        for (News news : newsList) {
-            System.out.println(news.getTitle());
+        RSSReader rssReader = new RSSReaderImpl();
+        List<DynamicCard> dynamicCardList = rssReader.readFeed();
+        assertEquals(10, dynamicCardList.size());
+        for (DynamicCard dynamicCard : dynamicCardList) {
+            System.out.println(dynamicCard.getTitle());
         }
     }
 }

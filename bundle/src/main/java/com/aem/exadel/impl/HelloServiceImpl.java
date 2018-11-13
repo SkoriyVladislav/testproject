@@ -5,7 +5,6 @@ import javax.jcr.Repository;
 import org.apache.sling.jcr.api.SlingRepository;
 
 import com.aem.exadel.HelloService;
-import org.osgi.service.component.annotations.Reference;
 
 /**
  * One implementation of the {@link HelloService}. Note that
@@ -13,8 +12,7 @@ import org.osgi.service.component.annotations.Reference;
  */
 
 public class HelloServiceImpl implements HelloService {
-    
-    @Reference
+
     private SlingRepository repository;
 
     public String getRepositoryName() {

@@ -1,6 +1,6 @@
 package com.aem.exadel.service;
 
-import com.adobe.cq.sightly.WCMUsePojo;
+import com.adobe.cq.sightly.WCMUse;
 import com.aem.exadel.entity.ManualCard;
 
 import lombok.Getter;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 
-public class ManualCardRestComponent extends WCMUsePojo {
+public class ManualCardRestComponent extends WCMUse {
 
     @Getter
     @Setter

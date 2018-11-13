@@ -1,26 +1,17 @@
 package com.aem.exadel.servlet;
 
+import org.apache.felix.scr.annotations.sling.SlingServlet;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
-import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 
 import javax.jcr.Repository;
-import javax.servlet.Servlet;
 import java.io.IOException;
 
 
-@Component(service = Servlet.class, immediate = true,
-        property = {
-                "sling.servlet.paths=/bin/rss",
-                "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-                "sling.servlet.extensions=" + "html"
-        })
+@SlingServlet(paths="/bin/mySearchServlet", methods = "GET", metatype=true)
 public class Controller extends SlingAllMethodsServlet {
 
-    @Reference
     private Repository repository;
 
     @Override

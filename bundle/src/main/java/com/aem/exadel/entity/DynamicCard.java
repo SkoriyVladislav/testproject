@@ -1,10 +1,10 @@
 package com.aem.exadel.entity;
 
-import com.adobe.cq.sightly.WCMUsePojo;
+import com.adobe.cq.sightly.WCMUse;
 import lombok.Data;
 
 @Data
-public class DynamicCard extends WCMUsePojo {
+public class DynamicCard extends WCMUse {
     private String title;
     private String link;
     private String description;

@@ -30,12 +30,14 @@
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.jcr.api</artifactId>
             <scope>provided</scope>
+            <version>2.1.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.api</artifactId>
             <scope>provided</scope>
+            <version>2.18.4</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.day.cq/cq-commons -->
@@ -135,24 +137,6 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>com.day.jcr.vault</groupId>
-                <artifactId>content-package-maven-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <group>Exadel</group>
-                    <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
-                    <embeddeds>
-                        <embedded>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>testproject-bundle</artifactId>
-                            <target>/apps/TestProject/install</target>
-                        </embedded>
-                    </embeddeds>
-                    <targetURL>http://${crx.host}:${crx.port}/crx/packmgr/service.jsp</targetURL>
-                </configuration>
-            </plugin>
-
             <!-- UI Build -->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
@@ -198,6 +182,7 @@
     </build>
 
     <profiles>
+
         <profile>
             <id>autoInstallPackage</id>
             <build>
@@ -308,4 +293,5 @@
             </build>
         </profile>
     </profiles>
+
 </project>

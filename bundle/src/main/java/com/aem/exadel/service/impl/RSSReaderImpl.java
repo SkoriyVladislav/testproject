@@ -4,7 +4,7 @@ import com.aem.exadel.entity.DynamicCard;
 import com.aem.exadel.service.RSSReader;
 import lombok.Getter;
 import lombok.Setter;
-import org.osgi.service.component.annotations.Component;
+import org.apache.felix.scr.annotations.Component;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;

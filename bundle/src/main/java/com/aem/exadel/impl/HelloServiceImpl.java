@@ -1,3 +1,4 @@
+/*
 package com.aem.exadel.impl;
 
 import javax.jcr.Repository;
@@ -6,10 +7,12 @@ import org.apache.sling.jcr.api.SlingRepository;
 
 import com.aem.exadel.HelloService;
 
+*/
 /**
  * One implementation of the {@link HelloService}. Note that
  * the repository is injected, not retrieved.
- */
+ *//*
+
 
 public class HelloServiceImpl implements HelloService {
 
@@ -23,3 +26,4 @@ public class HelloServiceImpl implements HelloService {
         return str.toUpperCase();
     }
 }
+*/

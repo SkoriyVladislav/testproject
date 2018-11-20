@@ -4,7 +4,8 @@ import com.aem.exadel.entity.DynamicCard;
 import com.aem.exadel.service.RSSReader;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.felix.scr.annotations.Component;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.Model;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -18,7 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(immediate = true)
+@Model(adaptables = Resource.class)
 public class RSSReaderImpl implements RSSReader {
     private static final String TITLE = "title";
     private static final String DESCRIPTION = "description";

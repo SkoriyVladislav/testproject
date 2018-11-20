@@ -1,6 +1,6 @@
 package com.aem.exadel.service;
 
-import com.adobe.cq.sightly.WCMUse;
+import com.adobe.cq.sightly.WCMUsePojo;
 import com.aem.exadel.entity.ManualCard;
 
 import lombok.Getter;
@@ -8,12 +8,14 @@ import lombok.Setter;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.models.annotations.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 
-public class ManualCardRestComponent extends WCMUse {
+@Model(adaptables = Resource.class)
+public class ManualCardRestComponent extends WCMUsePojo {
 
     @Getter
     @Setter

@@ -13,11 +13,10 @@ import org.apache.sling.models.factory.ModelFactory;
 
 @Model(
         adaptables = {SlingHttpServletRequest.class},
-        adapters = {Interface.class},
         resourceType = {HelloWorldModel.RESOURCE_TYPE},
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
-public class HelloWorldModel implements Interface {
+public class HelloWorldModel {
     static final String RESOURCE_TYPE = "testprojekt/components/content/helloWorldModel";
 
     @Self
@@ -30,8 +29,6 @@ public class HelloWorldModel implements Interface {
     @OSGiService
     private ModelFactory modelFactory;
 
-//    @Getter
-//    @Setter
     @ValueMapValue
     private String message;
 

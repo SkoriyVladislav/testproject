@@ -5,16 +5,21 @@ import com.aem.exadel.entity.ManualCard;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 
-@Model(adaptables = Resource.class)
+@Model(
+        adaptables = {SlingHttpServletRequest.class},
+        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
+)
 public class ManualCardRestComponent extends WCMUsePojo {
 
     @Getter

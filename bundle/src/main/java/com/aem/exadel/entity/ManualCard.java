@@ -6,7 +6,6 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 
 @Data
-@Model(adaptables = Resource.class)
 public class ManualCard extends WCMUsePojo {
     private String title;
     private String link;

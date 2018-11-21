@@ -5,7 +5,8 @@ import com.aem.exadel.entity.DynamicCard;
 import com.aem.exadel.service.impl.RSSReaderImpl;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +14,10 @@ import org.slf4j.LoggerFactory;
 import javax.jcr.Node;
 import java.util.List;
 
-@Model(adaptables = Resource.class)
+@Model(
+        adaptables = {SlingHttpServletRequest.class},
+        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
+)
 public class DynamicCardRestComponent extends WCMUsePojo {
     @Getter
     @Setter

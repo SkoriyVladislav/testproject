@@ -552,9 +552,6 @@
 
         <profile>
             <id>autoInstallPackage</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <build>
                 <pluginManagement>
                     <plugins>
@@ -567,9 +564,6 @@
                                     <goals>
                                         <goal>install</goal>
                                     </goals>
-                                    <configuration>
-                                        <targetURL>http://${crx.host}:${crx.port}/crx/packmgr/service.jsp</targetURL>
-                                    </configuration>
                                 </execution>
                             </executions>
                         </plugin>

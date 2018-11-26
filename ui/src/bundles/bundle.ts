@@ -17,6 +17,8 @@ const COMPONENTS_LIST = [
     VideoOverlay
 ];
 
+
+
 COMPONENTS_LIST.forEach((Component) => {
     const component = new Component();
 });

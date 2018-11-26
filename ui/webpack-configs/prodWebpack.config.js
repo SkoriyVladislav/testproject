@@ -1,23 +1,23 @@
 const path = require('path');
 const paths = require('../paths/config-paths');
-const INPUT_JS = paths.INPUT_JS;
-const OUTPUT_DIR = paths.OUTPUT_DIR;
 
 const gulp = require('gulp');
-const gzip = require('gulp-gzip');
-const webpackStream = require('webpack-stream');
-const named = require('vinyl-named');
 
+const webpackStream = require('webpack-stream');
+
+// UTILS
+const named = require('vinyl-named');
 
 module.exports = function () {
     let options = {
         mode: 'production',
-        context: path.join(__dirname, '/../src/components/bundle-content'),
+        context: path.join(__dirname, '/../src/bundles'),
         entry: {
-            bundle: './bundle',
+            bundle: './bundle.ts',
+            polyfill: './polyfill.ts',
         },
         output: {
-            path: path.join(__dirname + '/' + OUTPUT_DIR),
+            path: path.join(__dirname + '/' + paths.OUTPUT_DIR),
             filename: '[name].js',
             library: '[name]'
         },
@@ -36,11 +36,8 @@ module.exports = function () {
         },
 
     };
-    return gulp.src(INPUT_JS)
+    return gulp.src(paths.INPUT_JS)
         .pipe(named())
         .pipe(webpackStream(options))
-        .pipe(gulp.dest(paths.OUTPUT_DIR_PROD))
-        .pipe(gzip())
-        .pipe(gulp.dest(paths.OUTPUT_DIR_PROD))
+        .pipe(gulp.dest(paths.OUTPUT_DIR_PROD));
 };
-

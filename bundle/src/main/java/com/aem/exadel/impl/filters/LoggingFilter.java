@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 * Simple servlet filter component that logs incoming requests.
 */
 @SlingFilter(generateComponent = false, generateService = true, order = -700, scope = SlingFilterScope.REQUEST)
-@Component(immediate = true, metatype = false)
+@Component(immediate = true)
 public class LoggingFilter implements Filter {
     
     private Logger logger = LoggerFactory.getLogger(LoggingFilter.class);

@@ -1,5 +1,4 @@
 .idea/
-(a-Z)*.vlt
+*.vlt
 libs
 *.iml
-*.vlt

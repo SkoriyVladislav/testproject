@@ -1,10 +1,8 @@
 package com.aem.exadel.service.impl;
 
-import com.aem.exadel.entity.DynamicCard;
+import com.aem.exadel.entity.News;
 import com.aem.exadel.service.RSSReader;
-import lombok.Getter;
-import lombok.Setter;
-import org.osgi.service.component.annotations.Component;
+import jdk.nashorn.internal.ir.annotations.Reference;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -18,7 +16,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(immediate = true)
 public class RSSReaderImpl implements RSSReader {
     private static final String TITLE = "title";
     private static final String DESCRIPTION = "description";
@@ -29,20 +26,7 @@ public class RSSReaderImpl implements RSSReader {
     private static final String ENCLOSURE = "enclosure";
     private static final String SOURCE = "source";
 
-    @Getter
-    @Setter
     private URL url;
-    @Getter
-    @Setter
-    private List<DynamicCard> dynamicCards;
-
-    public RSSReaderImpl() {
-        try {
-            this.url = new URL("https://www.nasa.gov/rss/dyn/breaking_news.rss");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public RSSReaderImpl(String feedUrl) {
         try {
@@ -53,8 +37,8 @@ public class RSSReaderImpl implements RSSReader {
     }
 
     @Override
-    public List<DynamicCard> readFeed() {
-        ArrayList<DynamicCard> feed = null;
+    public List<News> readFeed() {
+        ArrayList<News> feed = null;
         try {
             boolean isFeedHeader = true;
             String description = "";
@@ -105,22 +89,21 @@ public class RSSReaderImpl implements RSSReader {
                     }
                 } else if (event.isEndElement()) {
                     if (event.asEndElement().getName().getLocalPart() == (ITEM)) {
-                        DynamicCard dynamicCard = new DynamicCard();
-                        dynamicCard.setTitle(title);
-                        dynamicCard.setDescription(description);
-                        dynamicCard.setGuid(guid);
-                        dynamicCard.setLink(link);
-                        dynamicCard.setPubDate(pub_date);
-                        dynamicCard.setEnclosure(enclosure);
-                        dynamicCard.setSource(source);
-                        feed.add(dynamicCard);
+                        News news = new News();
+                        news.setTitle(title);
+                        news.setDescription(description);
+                        news.setGuid(guid);
+                        news.setLink(link);
+                        news.setPubDate(pub_date);
+                        news.setEnclosure(enclosure);
+                        news.setSource(source);
+                        feed.add(news);
                     }
                 }
             }
         } catch (XMLStreamException e) {
             throw new RuntimeException(e);
         }
-        this.dynamicCards = feed;
         return feed;
     }
 

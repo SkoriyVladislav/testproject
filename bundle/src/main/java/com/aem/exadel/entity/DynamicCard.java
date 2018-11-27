@@ -2,7 +2,12 @@ package com.aem.exadel.entity;
 
 import com.adobe.cq.sightly.WCMUsePojo;
 import lombok.Data;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.Model;
+import org.osgi.service.component.annotations.Component;
 
+
+@Model(adaptables = Resource.class)
 @Data
 public class DynamicCard extends WCMUsePojo {
     private String title;

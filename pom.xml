@@ -204,6 +204,13 @@
                 <version>1.4</version>
                 <scope>test</scope>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -552,6 +559,9 @@
 
         <profile>
             <id>autoInstallPackage</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
             <build>
                 <pluginManagement>
                     <plugins>
@@ -566,6 +576,10 @@
                                     </goals>
                                 </execution>
                             </executions>
+
+                            <configuration>
+                                <targetURL>http://${crx.host}:${crx.port}/crx/packmgr/service.jsp</targetURL>
+                            </configuration>
                         </plugin>
                     </plugins>
                 </pluginManagement>

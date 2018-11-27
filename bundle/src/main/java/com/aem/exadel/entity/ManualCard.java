@@ -1,22 +1,25 @@
 package com.aem.exadel.entity;
 
-import com.adobe.cq.sightly.WCMUsePojo;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
+import javax.inject.Inject;
 
+@Model(adaptables = Resource.class)
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class ManualCard extends WCMUsePojo {
+@EqualsAndHashCode(callSuper = false)
+public class ManualCard {
+    @Inject
     private String title;
+    @Inject
     private String link;
+    @Inject
     private String description;
+    @Inject
     private String pubDate;
-
-    @Override
-    public void activate() throws Exception {
-        this.title = get("title", String.class);
-        this.link = get("link", String.class);
-        this.pubDate = get("pubDate", String.class);
-        this.description = get("description", String.class);
-    }
 }

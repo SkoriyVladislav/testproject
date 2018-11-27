@@ -5,27 +5,19 @@ import com.aem.exadel.entity.ManualCard;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
-import org.apache.sling.models.annotations.DefaultInjectionStrategy;
-import org.apache.sling.models.annotations.Model;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 
-@Model(
-        adaptables = {SlingHttpServletRequest.class},
-        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
-)
 public class ManualCardRestComponent extends WCMUsePojo {
+
+    protected static final String RESOURCE_TYPE = "TestProject/components/content/manual-Card";
 
     @Getter
     @Setter
-    private ManualCard manualCard = null;
-    protected final Logger log = LoggerFactory.getLogger(this.getClass());
+    private com.aem.exadel.entity.ManualCard manualCard = null;
 
     @Override
     public void activate() throws Exception {
@@ -37,23 +29,25 @@ public class ManualCardRestComponent extends WCMUsePojo {
         } else {
             return;
         }
-
         ResourceResolver resourceResolver = getRequest().getResourceResolver();
         Resource resource = resourceResolver.getResource(link + "/jcr:content/content/article");
-        ValueMap valueMap = resource.getValueMap();
 
-        manualCard = getCard(valueMap);
+        //manualCard = resource.adaptTo(com.aem.exadel.entity.ManualCard.class);
+        manualCard = getCard(resource);
     }
 
+    private static ManualCard getCard(Resource resource) {
+        if (resource != null) {
+            ManualCard manualCard = new ManualCard();
+            ValueMap valueMap = resource.getValueMap();
 
-    private static ManualCard getCard(ValueMap valueMap) {
-        ManualCard manualCard = new ManualCard();
-        manualCard.setTitle(valueMap.get("./jcr:title").toString());
-        manualCard.setDescription(valueMap.get("./jcr:title").toString());
-        manualCard.setLink("link");
-        manualCard.setPubDate(valueMap.get("./jcr:pubDate").toString());
-
-        return manualCard;
+            manualCard.setTitle(valueMap.get("./jcr:title").toString());
+            manualCard.setDescription(valueMap.get("./jcr:description").toString());
+            manualCard.setLink("link");
+            manualCard.setPubDate(valueMap.get("./jcr:pubDate").toString());
+            return manualCard;
+        }
+        return null;
     }
 
 }

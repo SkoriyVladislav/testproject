@@ -1,19 +1,24 @@
 package com.aem.exadel.servlet;
 
-import org.apache.felix.scr.annotations.sling.SlingServlet;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
+import org.osgi.framework.Constants;
+import org.osgi.service.component.annotations.Component;
 
-import javax.jcr.Repository;
+
+import javax.servlet.Servlet;
 import java.io.IOException;
 
-
-@SlingServlet(paths="/bin/mySearchServlet", methods = "GET", metatype=true)
+@Component(service=Servlet.class,
+        property={
+                Constants.SERVICE_DESCRIPTION + "=Simple Demo Servlet",
+                "sling.servlet.methods=" + HttpConstants.METHOD_GET,
+                    "sling.servlet.resourceTypes="+ "AemTraining64/components/structure/main-page",
+                "sling.servlet.extensions=" + "txt"
+        })
 public class Controller extends SlingAllMethodsServlet {
-
-    private Repository repository;
-
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws IOException {
         response.setStatus(200);

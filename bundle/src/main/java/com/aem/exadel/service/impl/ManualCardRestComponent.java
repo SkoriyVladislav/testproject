@@ -1,8 +1,10 @@
-package com.aem.exadel.service;
+package com.aem.exadel.service.impl;
 
 import com.adobe.cq.sightly.WCMUsePojo;
 import com.aem.exadel.entity.ManualCard;
 
+import com.aem.exadel.entity.News;
+import com.aem.exadel.service.CardsRestComponent;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.sling.api.resource.Resource;
@@ -10,14 +12,16 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 
 import javax.jcr.Node;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ManualCardRestComponent extends WCMUsePojo {
+public class ManualCardRestComponent extends WCMUsePojo implements CardsRestComponent {
 
     protected static final String RESOURCE_TYPE = "TestProject/components/content/manual-Card";
 
     @Getter
     @Setter
-    private com.aem.exadel.entity.ManualCard manualCard = null;
+    private ManualCard card;
 
     @Override
     public void activate() throws Exception {
@@ -33,18 +37,23 @@ public class ManualCardRestComponent extends WCMUsePojo {
         Resource resource = resourceResolver.getResource(link + "/jcr:content/content/article");
 
         //manualCard = resource.adaptTo(com.aem.exadel.entity.ManualCard.class);
-        manualCard = getCard(resource);
+        card = getCard(resource);
     }
 
     private static ManualCard getCard(Resource resource) {
         if (resource != null) {
-            ManualCard manualCard = new ManualCard();
+            News news = new News();
             ValueMap valueMap = resource.getValueMap();
 
-            manualCard.setTitle(valueMap.get("./jcr:title").toString());
-            manualCard.setDescription(valueMap.get("./jcr:description").toString());
-            manualCard.setLink("link");
-            manualCard.setPubDate(valueMap.get("./jcr:pubDate").toString());
+            news.setTitle(valueMap.get("./jcr:title").toString());
+            news.setDescription(valueMap.get("./jcr:description").toString());
+            news.setLink("link");
+            news.setPubDate(valueMap.get("./jcr:pubDate").toString());
+
+            ManualCard manualCard = new ManualCard();
+            List<News> arr = new ArrayList<>();
+            arr.add(news);
+            manualCard.setNews(arr);
             return manualCard;
         }
         return null;

@@ -1,6 +1,9 @@
 <div class="main-wrapper">
+    <sly data-sly-test="${WCMMode.disabled || !WCMMode.preview}">
+        <div class="main-container">
+            <sly data-sly-resource="${'content' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+        </div>
+    </sly>
 
-    <div class="main-container">
-        <sly data-sly-resource="${'content' @ resourceType='wcm/foundation/components/parsys'}"></sly>
-    </div>
+
 </div>

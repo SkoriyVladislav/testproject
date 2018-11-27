@@ -1,6 +1,6 @@
 <!--/*<div>
 
-    <dl data-sly-use.cardRest="com.aem.exadel.service.DynamicCardRestComponent" data-sly-list="${cardRest.news}">
+    <dl data-sly-use.cardRest="com.aem.exadel.service.impl.DynamicCardRestComponent" data-sly-list="${cardRest.news}">
         <dd>
             <h1>${item.title == null ? "Dynamic card" : item.title}</h1>
             <h4>${item.link}</h4>
@@ -20,7 +20,7 @@
 
     <div data-slide-area class="carousel-items">
 
-        <sly data-sly-use.cardRest="com.aem.exadel.service.DynamicCardRestComponent"
+        <sly data-sly-use.cardRest="com.aem.exadel.service.impl.DynamicCardRestComponent"
              data-sly-list.news="${cardRest.news}">
             <div data-slide-item class="carousel-item carousel-post active-slide">
                 <a href=${news.link} class="post-link">
@@ -41,7 +41,7 @@
         </sly>
     </div>
     <!--/*<div data-slide-area class="carousel-items">
-        <div data-sly-use.cardRest="com.aem.exadel.service.DynamicCardRestComponent" data-sly-list.news="${cardRest.news}">
+        <div data-sly-use.cardRest="com.aem.exadel.service.impl.DynamicCardRestComponent" data-sly-list.news="${cardRest.news}">
             <div data-slide-item class="carousel-item carousel-post active-slide" data-sly-test=${newsList.last}>
                 <div class="post-container">
                     <h1 class="post-title" data-sly-resource="${news.title}" >${news.title}</h1>

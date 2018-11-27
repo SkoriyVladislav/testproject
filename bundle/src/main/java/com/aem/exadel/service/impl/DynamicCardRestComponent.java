@@ -1,7 +1,10 @@
-package com.aem.exadel.service;
+package com.aem.exadel.service.impl;
 
 import com.adobe.cq.sightly.WCMUsePojo;
 import com.aem.exadel.entity.DynamicCard;
+import com.aem.exadel.entity.News;
+import com.aem.exadel.service.CardsRestComponent;
+import com.aem.exadel.service.RSSReader;
 import com.aem.exadel.service.impl.RSSReaderImpl;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,14 +17,10 @@ import org.slf4j.LoggerFactory;
 import javax.jcr.Node;
 import java.util.List;
 
-@Model(
-        adaptables = {SlingHttpServletRequest.class},
-        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
-)
-public class DynamicCardRestComponent extends WCMUsePojo {
+public class DynamicCardRestComponent extends WCMUsePojo implements CardsRestComponent {
     @Getter
     @Setter
-    private List<DynamicCard> news;
+    private DynamicCard card;
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Override
@@ -36,7 +35,9 @@ public class DynamicCardRestComponent extends WCMUsePojo {
         }
 
         RSSReader rssReader = new RSSReaderImpl(link);
-        news = rssReader.readFeed();
 
+        card = new DynamicCard();
+        List<News> news = rssReader.readFeed();
+        card.setNews(news);
     }
 }

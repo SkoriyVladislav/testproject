@@ -1,6 +1,7 @@
 package com.aem.exadel.service.impl;
 
 import com.aem.exadel.entity.DynamicCard;
+import com.aem.exadel.entity.News;
 import com.aem.exadel.service.RSSReader;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,16 +27,13 @@ public class RSSReaderImpl implements RSSReader {
     private static final String LINK = "link";
     private static final String ITEM = "item";
     private static final String PUB_DATE = "pubDate";
-    private static final String GUID = "guid";
-    private static final String ENCLOSURE = "enclosure";
-    private static final String SOURCE = "source";
 
     @Getter
     @Setter
     private URL url;
     @Getter
     @Setter
-    private List<DynamicCard> dynamicCards;
+    private List<News> newsList;
 
     public RSSReaderImpl() {
         try {
@@ -54,17 +52,14 @@ public class RSSReaderImpl implements RSSReader {
     }
 
     @Override
-    public List<DynamicCard> readFeed() {
-        ArrayList<DynamicCard> feed = null;
+    public List<News> readFeed() {
+        ArrayList<News> feed = null;
         try {
             boolean isFeedHeader = true;
             String description = "";
             String title = "";
             String link = "";
             String pub_date = "";
-            String guid = "";
-            String enclosure = "";
-            String source = "";
 
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
@@ -92,36 +87,25 @@ public class RSSReaderImpl implements RSSReader {
                         case LINK:
                             link = getCharacterData(event, eventReader);
                             break;
-                        case GUID:
-                            guid = getCharacterData(event, eventReader);
-                            break;
                         case PUB_DATE:
                             pub_date = getCharacterData(event, eventReader);
                             break;
-                        case ENCLOSURE:
-                            enclosure = getCharacterData(event, eventReader);
-                            break;
-                        case SOURCE:
-                            source = getCharacterData(event, eventReader);
                     }
                 } else if (event.isEndElement()) {
                     if (event.asEndElement().getName().getLocalPart() == (ITEM)) {
-                        DynamicCard dynamicCard = new DynamicCard();
-                        dynamicCard.setTitle(title);
-                        dynamicCard.setDescription(description);
-                        dynamicCard.setGuid(guid);
-                        dynamicCard.setLink(link);
-                        dynamicCard.setPubDate(pub_date);
-                        dynamicCard.setEnclosure(enclosure);
-                        dynamicCard.setSource(source);
-                        feed.add(dynamicCard);
+                        News news = new News();
+                        news.setTitle(title);
+                        news.setDescription(description);
+                        news.setLink(link);
+                        news.setPubDate(pub_date);
+                        feed.add(news);
                     }
                 }
             }
         } catch (XMLStreamException e) {
             throw new RuntimeException(e);
         }
-        this.dynamicCards = feed;
+        this.newsList = feed;
         return feed;
     }
 

@@ -22,4 +22,5 @@ public class ManualCard {
     private String description;
     @Inject
     private String pubDate;
+
 }

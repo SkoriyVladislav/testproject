@@ -7,7 +7,7 @@
        </div>*/-->
 
 <article class="post" onclick="location.href='TestPage.html';">
-    <div data-sly-use.cardObject="com.aem.exadel.service.impl.ManualCardRestComponent"
+    <div data-sly-use.cardObject="com.aem.exadel.service.ManualCardRestComponent"
          data-sly-list.news="${cardObject.card.news}"
          class="post-container">
         <h1 class="post-title">${news.title == null ? "Manual card" : news.title}</h1>

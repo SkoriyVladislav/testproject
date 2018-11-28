@@ -10,10 +10,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: biz.aQute.bnd:annotation:2.4.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.day.cq.wcm:cq-wcm-taglib:5.7.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.adobe.aem:uber-jar:apis:6.4.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: biz.aQute.bnd:annotation:2.4.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.jcr:jcr:2.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.day.cq.wcm:cq-wcm-taglib:5.7.4" level="project" />

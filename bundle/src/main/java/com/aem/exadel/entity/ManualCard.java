@@ -6,15 +6,15 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
-import javax.inject.Inject;
 import java.util.List;
+
 
 @Model(adaptables = Resource.class)
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class ManualCard implements Card{
+public class ManualCard {
     private CardType cardType = CardType.MANUAL;
     private List<News> news;
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class DynamicCard implements Card {
+public class DynamicCard{
     private CardType cardType = CardType.DYNAMIC;
     private List<News> news;
 }

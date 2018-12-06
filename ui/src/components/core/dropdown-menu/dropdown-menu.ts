@@ -35,13 +35,13 @@ class DropdownMenu extends PopupMenu {
 
     set activeIndex(index: number) {
         this.activeItm.toggleAttribute('active-menu-item');
-        this.menuArr[index]. toggleAttribute('active-menu-item');
+        this.menuArr[index].toggleAttribute('active-menu-item');
     }
 
     private _onChange(event: MouseEvent) {
         const target = event.target as HTMLElement;
-        this.input.triggerInput(target.textContent);
         this.activeIndex = +target.dataset.menuItem - 1;
+        this.input.triggerInput(target.textContent);
         this.active = !this.active;
         if (!this.active) {
             (this.activeItm) && this.activeItm.focus();

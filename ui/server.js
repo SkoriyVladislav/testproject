@@ -73,6 +73,8 @@ function renderDir(res, pathDir, fsPath) {
     });
 }
 
+app.use('/assets', express.static('./assets'));
+
 app.get('/*', function (req, res, next) {
     const pathname = url.parse(req.url).pathname;
 
@@ -96,6 +98,8 @@ app.get('/*', function (req, res, next) {
     }
     next();
 });
+
+
 app.listen(8080, function () {
     console.log('Example app listening on port 8080!');
 });

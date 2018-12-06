@@ -1,21 +1,17 @@
 <div class="full-post-wrapper">
     <div class="img-container">
-        <picture>
-            <source media="(max-width: 800px)" data-src="{{var.img1}}"/>
-            <source media="(max-width: 1300px)" data-src="{{var.img2}}"/>
-            <img class="post-img" data-src="{{var.img3}}"/>
-        </picture>
+        <img class="post-img" data-src="{{var.img}}"/>
     </div>
     <div class="full-post-container">
         {{{include 'post' var='var1'}}}
         <div class="post-line"></div>
         <ul class="group-nav-btn">
             <li>
-                <a href="full-page.html" class="prev-btn">Назад</a>
+                <a href="full-page.html" class="prev-btn"><label-i18n>Previous</label-i18n></a>
             </li>
             <li class="paging-separator">|</li>
             <li>
-                <a href="full-page.html" class="next-btn">Вперед</a>
+                <a href="full-page.html" class="next-btn"><label-i18n>Next</label-i18n></a>
             </li>
         </ul>
     </div>

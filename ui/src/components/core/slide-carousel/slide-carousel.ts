@@ -12,7 +12,7 @@ class SlideCarousel extends HTMLElement {
     }
 
     get activeIndex(): number {
-        return this.slides.findIndex((el) => el.classList.contains('active-slide'));
+        return this.slides.findIndex((el) => el.classList.contains(this.activeClass));
     }
 
     private _cleanAnimationClasses() {

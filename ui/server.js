@@ -78,7 +78,7 @@ app.use('/assets', express.static('./assets'));
 app.get('/*', function (req, res, next) {
     const pathname = url.parse(req.url).pathname;
 
-    if (/\.(js|css|ico|png|jpg|gif|woff|woff2)$/.test(pathname)) {
+    if (/\.(js|css|ico|png|jpg|gif|woff|woff2|svg)$/.test(pathname)) {
         next();
         return;
     }

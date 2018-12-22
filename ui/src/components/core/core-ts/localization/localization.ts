@@ -1,27 +1,70 @@
-import * as paths from '../../../../../paths/config-paths';
-import LabelI18n from "./label-i18n";
+import API from "../API";
 
-class Localization {
+let instance: LocalizationManager;
 
-    currentLocale: string;
+export interface LocationObserver {
+    locationChange: (manager: LocalizationManager) => void
+}
 
-    get items() {
-        const els = document.querySelectorAll('label-i18n') as NodeListOf<LabelI18n>;
-        return els ? Array.from(els) : [];
+class LocalizationManager {
+
+    private _currentLocale: string;
+    private _translations: { [key: string]: string };
+    private _subscribers: LocationObserver[];
+
+    constructor() {
+        if (instance) {
+            return instance;
+        }
+        instance = this;
+
+        instance._subscribers = [];
     }
 
-    private changeLang(trans?: any) {
-        this.items.forEach((elem: LabelI18n) => {
-            trans && trans[elem.value] ? elem.value = trans[elem.value] : elem.value = elem.enValue;
-        })
+    private onChange() {
+        API.sendRequest(this._currentLocale).then((trans) => {
+            this._translations = trans;
+            this.emitChanges();
+        });
     }
 
-    private _onChange(event: MouseEvent) {
-        // @ts-ignore
-        const target = event.detail as HTMLElement;
-        const nextEl = target.querySelector('label-i18n') as LabelI18n;
-        this.changeLang();
+    private emitChanges() {
+        this._subscribers.forEach((subs) => subs.locationChange(this));
+    }
+
+    getLocalizedValue(key: string): string {
+        return this._translations[key] ? this._translations[key] : key;
+    }
+
+    static subscribe(obj: LocationObserver) {
+        const inst = new LocalizationManager();
+        inst.subscribe(obj);
+    }
+
+    static unsubscribe(obj: LocationObserver) {
+        const inst = new LocalizationManager();
+        inst.unsubscribe(obj);
+    }
+
+    private subscribe(obj: LocationObserver) {
+        this._subscribers.push(obj)
+    }
+
+    private unsubscribe(obj: LocationObserver) {
+        const index = this._subscribers.indexOf(obj);
+        this._subscribers.splice(index, 1);
+    }
+
+    static instance(): LocalizationManager {
+        return new LocalizationManager();
+    }
+
+    public setLocale(value: string) {
+        this._currentLocale = value;
+        this.onChange();
     }
 }
 
-export default Localization;
+// @ts-ignore
+window.LocalizationManager = LocalizationManager;
+export default LocalizationManager;

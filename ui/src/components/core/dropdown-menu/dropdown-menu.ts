@@ -1,5 +1,6 @@
 import PopupMenu from "../popup-menu/popup-menu";
 import DropdownInput from "./dropdown-input";
+import LabelI18n from "../core-ts/localization/label-i18n";
 
 class DropdownMenu extends PopupMenu {
     static get is() {
@@ -40,8 +41,9 @@ class DropdownMenu extends PopupMenu {
 
     private _onChange(event: MouseEvent) {
         const target = event.target as HTMLElement;
+        const i18nEl = target.querySelector('label-i18n') as LabelI18n;
         this.activeIndex = +target.dataset.menuItem - 1;
-        this.input.triggerInput(target.textContent);
+        this.input.triggerInput(i18nEl.key);
         this.active = !this.active;
         if (!this.active) {
             (this.activeItm) && this.activeItm.focus();

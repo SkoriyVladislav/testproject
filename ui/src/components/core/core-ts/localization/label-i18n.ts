@@ -1,22 +1,32 @@
-class LabelI18n extends HTMLElement {
+import Localization, {LocationObserver} from "./localization";
+
+class LabelI18n extends HTMLElement implements LocationObserver{
     static get is() {
         return 'label-i18n';
     }
 
-    public enValue: string;
+    public key: string;
+
+    connectedCallback() {
+        Localization.subscribe(this);
+    }
+
+    disconnectedCallback() {
+        Localization.unsubscribe(this);
+    }
 
     constructor() {
         super();
-        this.enValue = this.textContent;
+        this.key = this.textContent;
     }
 
-    get value(): string{
+    get value(): string {
         return this.textContent;
     }
 
-    set value(value: string){
-        this.textContent = value;
-    }
+    locationChange (manager: Localization) {
+        this.textContent = manager.getLocalizedValue(this.key);
+    };
 }
 
 customElements.define(LabelI18n.is, LabelI18n);

@@ -10,21 +10,26 @@ import '../components/core/core-ts/localization/label-i18n'
 import VideoService from '../components/core/video-overlay/video-service';
 import VideoTrigger from '../components/core/video-overlay/video-trigger';
 import VideoOverlay from "../components/main-page/video-overlay/video-overlay";
-
-import Localization from "../components/core/core-ts/localization/localization";
-
-
+import LangMenuController from "../components/main-page/lang-menu/lang-menu";
 
 const COMPONENTS_LIST = [
     VideoService,
     VideoOverlay,
-    Localization
+    [LangMenuController, '.popup-menu-container']
 ];
 
+COMPONENTS_LIST.forEach((component: Function | Array<any>) => {
+    let Component;
+    let selector = '';
 
+    if (Array.isArray(component)) {
+        [Component, selector] = component;
+    } else {
+        Component = component;
+    }
 
-COMPONENTS_LIST.forEach((Component) => {
-    const component = new Component();
+    // console.log(`[Component Initialization]: component ${Component.name} on "${selector}"`);
+    new Component(selector && document.querySelector(selector));
 });
 
 const links = document.querySelectorAll('.post a[href*="youtube"]');

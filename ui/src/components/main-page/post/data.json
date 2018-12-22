@@ -3,7 +3,7 @@
     "title": "Title1",
     "date": "December 28, 2017",
     "link": "https://www.youtube.com/embed/WNeLUngb-Xg",
-    "textLink": "tutorial",
+    "textLink": "Tutorial",
     "text": [
       "of JavaScript developers know today. Use existing JavaScript code, \n incorporate popular JavaScript libraries, and call TypeScript code from JavaScript.",
       "TypeScript compiles to clean, \n simple JavaScript code which runs on any browser,  \n in Node.js, or in any JavaScript engine that supports ECMAScript 3 (or newer). \n Types enable JavaScript developers to use highly-productive development tools \n and practices like static checking and code refactoring when developing JavaScript applications. \n TypeScript compiles to clean,  \n simple JavaScript code which runs on any browser,  \n in Node.js, or in any JavaScript engine that supports ECMAScript 3 (or newer). \n Types enable JavaScript developers to use highly-productive development tools \n and practices like static checking and code refactoring when developing JavaScript applications.",
@@ -17,7 +17,7 @@
     "title": "Title2",
     "date": "June 03, 2017",
     "link": "https://www.youtube.com/embed/WNeLUngb-Xg",
-    "textLink": "tutorial",
+    "textLink": "Tutorial",
     "text": [
       "of JavaScript developers know today. Use existing JavaScript code, \n incorporate popular JavaScript libraries, and call TypeScript code from JavaScript.",
       "TypeScript compiles to clean, \n simple JavaScript code which runs on any browser,  \n in Node.js, or in any JavaScript engine that supports ECMAScript 3 (or newer)."

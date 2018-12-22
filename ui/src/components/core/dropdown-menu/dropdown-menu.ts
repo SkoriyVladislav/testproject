@@ -14,7 +14,7 @@ class DropdownMenu extends PopupMenu {
     public connectedCallback() {
         super.connectedCallback();
         this.classList.add('dropdown-menu');
-        this.menuArr[0].setAttribute("active-menu-item", '');
+        this.menuArr[0].setAttribute('active-menu-item', '');
         this.addEventListener('click', (event) => this._onChange(event));
     }
 

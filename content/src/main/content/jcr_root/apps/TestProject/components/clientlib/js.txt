@@ -1,0 +1,5 @@
+#base=js
+
+components.js
+CustomWidget.js
+

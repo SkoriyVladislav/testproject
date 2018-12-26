@@ -1,0 +1,17 @@
+<sly data-sly-use.lang_menu="popup-menu-container.js">
+
+    <dropdown-input target="dropdown-menu"
+                    data-default-value="${lang_menu.default_lang}"
+                    data-input-value="<label-i18n>${lang_menu.inputValue}</label-i18n>"
+                    id="dropdown-input"
+                    class="trigger-wrapper">
+        <button data-popup-btn="1" class="popup-btn"></button>
+    </dropdown-input>
+
+    <dropdown-menu id="dropdown-menu" data-popup-content class="elements-wrapper">
+        <ul data-sly-list.list=${lang_menu.linksList}>
+                <li><a href="javascript: void 0" data-menu-item="${list.id}">
+                <label-i18n>${list.lang}</label-i18n></a></li>
+        </ul>
+    </dropdown-menu>
+</sly>

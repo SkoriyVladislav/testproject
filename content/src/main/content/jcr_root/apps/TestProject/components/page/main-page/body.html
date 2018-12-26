@@ -15,8 +15,12 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <div data-sly-resource="${'cloudservices' @ resourceType='cq/cloudserviceconfigs/components/servicecomponents'}" data-sly-unwrap></div>
 
+<header data-sly-resource="${'header-container' @ resourceType='TestProject/components/content/header-container'}"> </header>
+
 <main>
     <sly data-sly-include="content.html"></sly>
 </main>
+
+<footer data-sly-resource="${'footer-container' @ resourceType='TestProject/components/content/footer-container'}"></footer>
 
 <sly data-sly-include="footerlibs.html" />

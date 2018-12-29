@@ -36,9 +36,7 @@ class DropdownMenu extends PopupMenu {
     }
 
     set activeIndex(index: number) {
-        // @ts-ignore
         this.activeItm.toggleAttribute('active-menu-item');
-        // @ts-ignore
         this.menuArr[index].toggleAttribute('active-menu-item');
     }
 

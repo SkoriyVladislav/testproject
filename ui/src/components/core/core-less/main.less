@@ -25,14 +25,15 @@ a.link {
 }
 
 a[href*="youtube"] {
-  background: linear-gradient(120deg, #8fd3f4 0%, #7a9eaf 100%) no-repeat 0 88%;
-  background-size: 100% 0.2em;
-  transition: background-size 0.25s ease-in;
   color: #000;
-  text-decoration: none;
+  text-decoration: underline;
   font-style: italic;
   pointer-events: auto;
   &:hover {
-    background-size: 100% 100%;
+    color: rgba(0, 0, 0, 0.5);
   }
+}
+
+.manual-Card, .dynamic-Card {
+  display: contents;
 }

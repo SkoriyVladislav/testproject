@@ -100,6 +100,32 @@
 }
 
 
+.post {
+  share-menu {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  .share-trigger {
+    visibility: hidden;
+  }
+}
+
+:not(.full-post-container) .post {
+  share-menu {
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+  }
+  &:hover {
+    share-menu {
+      opacity: 1;
+    }
+  }
+}
+
+.post:hover .share-trigger {
+  visibility: visible;
+}
 
 
 

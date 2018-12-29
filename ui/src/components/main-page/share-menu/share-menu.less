@@ -1,0 +1,56 @@
+share-menu {
+  display: inline-block;
+
+  .share-btn {
+    width: auto;
+    height: 35px;
+    padding: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+  }
+
+  .svg-share {
+    height: 25px;
+    width: 25px;
+    fill: #ebebeb;
+    transition: fill .2s ease-in-out;
+  }
+
+  .text-share {
+    margin-right: 7px;
+    color: #ebebeb;
+    font-family: Playfair Display Regular, serif;
+    font-size: 13.5px;
+    letter-spacing: .07em;
+    transition: color .2s ease-in-out;
+  }
+
+  .share-popup-menu {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 200px;
+  }
+
+  .share-itms .at-share-btn {
+    outline: none;
+  }
+
+  &:hover {
+    .svg-share {
+      fill: #b7b7b7;
+    }
+    .text-share {
+      color: #b7b7b7;
+    }
+  }
+  &[active] {
+    .svg-share {
+      fill: #b7b7b7;
+    }
+    .text-share {
+      display: none;
+    }
+  }
+}

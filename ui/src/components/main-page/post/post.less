@@ -99,14 +99,13 @@
   }
 }
 
-
 .post {
   share-menu {
     position: absolute;
     bottom: 10px;
     right: 10px;
   }
-  .share-trigger {
+  .share-menu {
     visibility: hidden;
   }
 }
@@ -123,8 +122,13 @@
   }
 }
 
-.post:hover .share-trigger {
-  visibility: visible;
+.post:hover {
+  .share-menu {
+    visibility: visible;
+  }
+  .text-share {
+    display: flex;
+  }
 }
 
 

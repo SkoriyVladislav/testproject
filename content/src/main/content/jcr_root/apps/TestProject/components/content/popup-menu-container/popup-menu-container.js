@@ -19,11 +19,14 @@ use(function () {
 
         	langList.push(singleObj);
     	};
+
+		lang_menu.linksList = langList;
+    } else {
+		lang_menu.linksList = ["UNDEF"];
     }
 
-	lang_menu.linksList = langList;
-    lang_menu.default_lang = lang_menu.linksList[0].lang;
     lang_menu.inputValue = CONST.PROP_INPUT_VALUE;
+
     return lang_menu;
 
 });

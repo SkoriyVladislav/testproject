@@ -1,12 +1,14 @@
-share-menu {
+.share-container {
   display: inline-block;
-
+  position: absolute;
+  bottom: 0;
+  right: 0;
   .share-btn {
+    display: flex;
     width: auto;
     height: 35px;
     padding: 0;
     background: #fff;
-    display: flex;
     align-items: center;
   }
 
@@ -15,6 +17,7 @@ share-menu {
     width: 25px;
     fill: #ebebeb;
     transition: fill .2s ease-in-out;
+
   }
 
   .text-share {
@@ -37,14 +40,6 @@ share-menu {
     outline: none;
   }
 
-  &:hover {
-    .svg-share {
-      fill: #b7b7b7;
-    }
-    .text-share {
-      color: #b7b7b7;
-    }
-  }
   &[active] {
     .svg-share {
       fill: #b7b7b7;
@@ -53,4 +48,8 @@ share-menu {
       display: none;
     }
   }
+}
+
+.share-btn:hover .text-share {
+  display: none;
 }

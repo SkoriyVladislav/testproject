@@ -1,8 +1,16 @@
-.share-container {
-  display: inline-block;
+.share-wrapper {
+  display: flex;
   position: absolute;
   bottom: 0;
   right: 0;
+  opacity: 0;
+  .share-trigger-container {
+    display: flex;
+    flex-direction: row-reverse;
+    &:hover .svg-share {
+      fill: #828282;
+    }
+  }
   .share-btn {
     display: flex;
     width: auto;
@@ -15,13 +23,29 @@
   .svg-share {
     height: 25px;
     width: 25px;
+    padding-bottom: 6px;
     fill: #ebebeb;
     transition: fill .2s ease-in-out;
+  }
 
+  .icon-svg-share {
+    fill: #ebebeb;
+    fill-rule: nonzero;
+    fill-opacity: 1;
+  }
+
+  .background-svg-share {
+    fill: #ffffff;
+    fill-opacity: 1;
+    fill-rule: nonzero;
+    vector-effect: non-scaling-stroke;
   }
 
   .text-share {
+    display: flex;
+    align-items: center;
     margin-right: 7px;
+    padding-bottom: 6px;
     color: #ebebeb;
     font-family: Playfair Display Regular, serif;
     font-size: 13.5px;
@@ -33,23 +57,19 @@
     position: absolute;
     top: 0;
     right: 100%;
-    width: 200px;
+    width: 185px;
+    transition: display 1s ease-in-out;
+
   }
 
   .share-itms .at-share-btn {
     outline: none;
   }
-
-  &[active] {
-    .svg-share {
-      fill: #b7b7b7;
-    }
-    .text-share {
-      display: none;
-    }
+  share-menu[active] + .text-share {
+    display: none;
   }
-}
 
-.share-btn:hover .text-share {
-  display: none;
+  share-menu[active] .svg-share{
+    fill: #828282;
+  }
 }

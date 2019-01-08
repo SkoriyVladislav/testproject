@@ -5,11 +5,14 @@ class PopupMenu extends HTMLElement {
 
     constructor() {
         super();
+
     }
 
     connectedCallback() {
         this.classList.add('popup-menu');
     }
+
+
 
     get type() {
         return this.getAttribute('type') || 'non-modal';

@@ -21,8 +21,8 @@
     <div data-slide-area class="carousel-items">
 
         <sly data-sly-use.cardRest="com.aem.exadel.service.DynamicCardRestComponent"
-             data-sly-list.news="${cardRest.news}">
-            <div data-slide-item class="carousel-item carousel-post active-slide">
+             data-sly-list.news="${cardRest.card.news}">
+            <div data-slide-item class="carousel-item carousel-post">
                 <a href=${news.link} class="post-link">
                     <div class="post-container">
                         <h1 class="post-title">${news.title}</h1>

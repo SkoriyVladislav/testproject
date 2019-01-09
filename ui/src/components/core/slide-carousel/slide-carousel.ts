@@ -48,7 +48,7 @@ class SlideCarousel extends HTMLElement {
 
     private connectedCallback() {
         this.classList.add('slide-carousel');
-        this.activeIndex = +this.dataset.firstActiveIndex - 1;
+        this.dataset.firstActiveIndex ? this.activeIndex = +this.dataset.firstActiveIndex - 1: this.activeIndex = 0;
         this.bindEvents();
     }
 

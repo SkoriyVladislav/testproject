@@ -33,7 +33,9 @@ class SlideCarousel extends HTMLElement {
             this.slides[numNextSlide].classList.add('right');
         }
 
-        this.slides[this.activeIndex].classList.remove(this.activeClass);
+        if (this.activeIndex !== -1) {
+            this.slides[this.activeIndex].classList.remove(this.activeClass);
+        }
         this.slides[numNextSlide].classList.add(this.activeClass);
 
         this.triggerSlideChange();
@@ -46,6 +48,7 @@ class SlideCarousel extends HTMLElement {
 
     private connectedCallback() {
         this.classList.add('slide-carousel');
+        this.activeIndex = +this.dataset.firstActiveIndex - 1;
         this.bindEvents();
     }
 

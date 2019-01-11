@@ -1,5 +1,5 @@
 <div class="dynamic-Card">
-    <slide-carousel class="carousel-wrapper" data-first-active-index="1">
+    <slide-carousel class="carousel-wrapper">
 
         <button data-slide-target="prev" class="carousel-controls arrow-previous-btn">
             <svg class="svg-arrow" data-slide-target="prev">
@@ -12,12 +12,16 @@
             {{#each var}}
                 <div data-slide-item class="carousel-item carousel-post">
                     <a href="full-page.html" class="post-link">
-                        <div class="post-container">
-                            <h1 class="post-title">{{title}}</h1>
-                            <div class="parent-post-text">
-                                <p class="post-text">
-                                    {{text}}
-                                </p>
+                        <div class="post">
+                            <div class="post-container">
+                                <div class="wrapper-post-title">
+                                    <h1 class="post-title">{{title}}</h1>
+                                </div>
+                                <div class="wrapper-post-text">
+                                    <p class="post-text">
+                                        {{text}}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </a>

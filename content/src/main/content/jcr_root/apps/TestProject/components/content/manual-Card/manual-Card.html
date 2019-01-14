@@ -5,22 +5,27 @@
        <h4>${cardObject.manualCard.link}</h4>
        <h5>${cardObject.manualCard.pubDate}</h5>
        </div>*/-->
+<sly data-sly-use.cardObject="com.aem.exadel.service.ManualCardRestComponent"
+     data-sly-list.news="${cardObject.card.news}">
+    <article class="post">
+        <a class="post-link" href="${news.link}">
+            <div class="post-container">
+                <div class="wrapper-post-title">
+                    <h1 class="post-title">${news.title == null ? "Manual card" : news.title}</h1>
+                </div>
 
-<article class="post" onclick="location.href='TestPage.html';">
-    <div data-sly-use.cardObject="com.aem.exadel.service.ManualCardRestComponent"
-         data-sly-list.news="${cardObject.card.news}"
-         class="post-container">
-        <h1 class="post-title">${news.title == null ? "Manual card" : news.title}</h1>
-        <div class="parent-post-text">
-            <p>
-                ${news.description}
-            </p>
-            <p>&nbsp;</p>
-            <p>${news.pubDate}</p>
-            <p>&nbsp;</p>
-            <p>${news.pubDate}</p>
-            <p>&nbsp;</p>
-        </div>
-            <!--<span class="read-pull-post">Читать статью ►</span>-->
-    </div>
-</article>
+                <div class="wrapper-post-text">
+                    <p>
+                        ${news.description}
+                    </p>
+                    <p>&nbsp;</p>
+                    <p>${news.pubDate}</p>
+                    <p>&nbsp;</p>
+                    <p>${news.pubDate}</p>
+                    <p>&nbsp;</p>
+                </div>
+                <!--<span class="read-pull-post">Читать статью ►</span>-->
+            </div>
+        </a>
+    </article>
+</sly>

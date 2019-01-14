@@ -20,7 +20,7 @@ import java.util.List;
 public class ManualCardRestComponent extends WCMUsePojo {
 
     protected static final String RESOURCE_TYPE = "TestProject/components/content/manual-Card";
-
+    private static final String LINK = "http://localhost:4502/|%s|?wcmmode=disabled";
     @Getter
     @Setter
     private ManualCard card;
@@ -36,7 +36,7 @@ public class ManualCardRestComponent extends WCMUsePojo {
             return;
         }
         ResourceResolver resourceResolver = getRequest().getResourceResolver();
-        Resource resource = resourceResolver.getResource(link + "/jcr:content/content/article");
+        Resource resource = resourceResolver.getResource(link + "/jcr:content/content/article/content");
 
         //manualCard = resource.adaptTo(com.aem.exadel.entity.ManualCard.class);
         card = getCard(resource);
@@ -49,7 +49,8 @@ public class ManualCardRestComponent extends WCMUsePojo {
 
             news.setTitle(valueMap.get("./jcr:title").toString());
             news.setDescription(valueMap.get("./jcr:description").toString());
-            news.setLink("link");
+            String str = valueMap.get("./jcr:url").toString();
+            news.setLink(String.format(LINK,valueMap.get("./jcr:url").toString()));
             news.setPubDate(valueMap.get("./jcr:pubDate").toString());
 
             ManualCard manualCard = new ManualCard();

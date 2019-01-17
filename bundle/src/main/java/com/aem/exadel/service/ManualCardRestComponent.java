@@ -38,7 +38,7 @@ public class ManualCardRestComponent extends WCMUsePojo {
         ResourceResolver resourceResolver = getRequest().getResourceResolver();
         Resource resource = resourceResolver.getResource(link + "/jcr:content/content/article/content");
 
-        //manualCard = resource.adaptTo(com.aem.exadel.entity.ManualCard.class);
+        //manualCard = resource.adaptTo(com.aem.exadel.entity.ManualCard.class); test
         card = getCard(resource);
     }
 

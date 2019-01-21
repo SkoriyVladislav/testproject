@@ -20,7 +20,7 @@ import java.util.List;
 public class ManualCardRestComponent extends WCMUsePojo {
 
     protected static final String RESOURCE_TYPE = "TestProject/components/content/manual-Card";
-    private static final String LINK = "http://localhost:4502/|%s|?wcmmode=disabled";
+    private static final String LINK = "http://localhost:4502/%s.html?wcmmode=disabled";
     @Getter
     @Setter
     private ManualCard card;
@@ -35,22 +35,22 @@ public class ManualCardRestComponent extends WCMUsePojo {
         } else {
             return;
         }
-        ResourceResolver resourceResolver = getRequest().getResourceResolver();
-        Resource resource = resourceResolver.getResource(link + "/jcr:content/content/article/content");
 
-        //manualCard = resource.adaptTo(com.aem.exadel.entity.ManualCard.class); test
-        card = getCard(resource);
+        ResourceResolver resourceResolver = getRequest().getResourceResolver();
+        Resource resource = resourceResolver.getResource(link + "/jcr:content/content/article");
+
+        //manualCard = resource.adaptTo(com.aem.exadel.entity.ManualCard.class);
+        card = getCard(resource, link);
     }
 
-    private static ManualCard getCard(Resource resource) {
+    private static ManualCard getCard(Resource resource, String link) {
         if (resource != null) {
             News news = new News();
             ValueMap valueMap = resource.getValueMap();
 
             news.setTitle(valueMap.get("./jcr:title").toString());
             news.setDescription(valueMap.get("./jcr:description").toString());
-            String str = valueMap.get("./jcr:url").toString();
-            news.setLink(String.format(LINK,valueMap.get("./jcr:url").toString()));
+            news.setLink(String.format(LINK, link.substring(1)));
             news.setPubDate(valueMap.get("./jcr:pubDate").toString());
 
             ManualCard manualCard = new ManualCard();

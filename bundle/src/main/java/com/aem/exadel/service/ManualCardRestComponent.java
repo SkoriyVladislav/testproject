@@ -7,6 +7,7 @@ import com.aem.exadel.entity.News;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
@@ -36,11 +37,11 @@ public class ManualCardRestComponent extends WCMUsePojo {
             return;
         }
 
-        ResourceResolver resourceResolver = getRequest().getResourceResolver();
-        Resource resource = resourceResolver.getResource(link + "/jcr:content/content/article");
+        /*ResourceResolver resourceResolver = getRequest().getResourceResolver();
+        Resource resource = resourceResolver.getResource(link + "/jcr:content/content/full_post_wrapper");
 
-        //manualCard = resource.adaptTo(com.aem.exadel.entity.ManualCard.class);
-        card = getCard(resource, link);
+        //manualCard = resource.adaptTo(com.aem.exadel.entity.ManualCard.class);*/
+        card = createCard(getRequest(), link);
     }
 
     private static ManualCard getCard(Resource resource, String link) {
@@ -62,4 +63,9 @@ public class ManualCardRestComponent extends WCMUsePojo {
         return null;
     }
 
+    public static ManualCard createCard(SlingHttpServletRequest request, String link) {
+        ResourceResolver resourceResolver = request.getResourceResolver();
+        Resource resource = resourceResolver.getResource(link + "/jcr:content/content/full_post_wrapper");
+        return getCard(resource, link);
+    }
 }

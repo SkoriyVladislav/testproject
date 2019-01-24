@@ -7,22 +7,18 @@
        </div>*/-->
 <sly data-sly-use.cardObject="com.aem.exadel.service.ManualCardRestComponent"
      data-sly-list.news="${cardObject.card.news}">
-    <article class="post">
-        <a class="post-link" href="${news.link}">
-            <div class="post-container">
-                <div class="wrapper-post-title">
-                    <h1 class="post-title">${news.title == null ? "Manual card" : news.title}</h1>
-                </div>
-                <span class="post-date">${news.pubDate}</span>
+    <article class="post" onclick="${news.link}">
+        <div class="post-container">
+            <h1 class="post-title">${news.title == null ? "Manual card" : news.title}</h1>
 
-                <div class="wrapper-post-text">
-                    <p>
-                        ${news.description}
-                    </p>
-                    <p>&nbsp;</p>
-                </div>
-                <!--<span class="read-pull-post">Читать статью ►</span>-->
+            <span class="post-date">${news.pubDate}</span>
+            <div class="wrapper-post-text">
+                <p>
+                    ${news.description}
+                </p>
+                <p>&nbsp;</p>
             </div>
-        </a>
+            <!--<span class="read-pull-post">Читать статью ►</span>-->
+        </div>
     </article>
 </sly>

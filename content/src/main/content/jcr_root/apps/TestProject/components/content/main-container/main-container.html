@@ -1,1 +1,69 @@
-<sly data-sly-resource="${'main-container' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+<sly data-sly-test="${!wcmmode.disabled}">
+    <sly data-sly-resource="${'main-container' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+</sly>
+
+<sly data-sly-test="${wcmmode.disabled}">
+    <sly data-sly-use.cardObject="com.aem.exadel.service.CardsComponent"
+         data-sly-list.cards="${cardObject.list}">
+
+        <div data-sly-test="${cards.cardType.name == 'manual'}" class="manual-Card">
+            <sly data-sly-list.news="${cards.news}">
+                <article class="post" onclick="${news.link}">
+                    <div class="post-container">
+                        <h1 class="post-title">${news.title == null ? "Manual card" : news.title}</h1>
+
+                        <span class="post-date">${news.pubDate}</span>
+                        <div class="wrapper-post-text">
+                            <p>
+                                ${news.description}
+                            </p>
+                            <p>&nbsp;</p>
+                        </div>
+                        <!--<span class="read-pull-post">Читать статью ►</span>-->
+                    </div>
+                </article>
+            </sly>
+        </div>
+
+        <div data-sly-test="${cards.cardType.name == 'dynamic'}" class="dynamic-Card">
+
+            <slide-carousel class="carousel-wrapper" data-first-active-index="1">
+
+                <button data-slide-target="prev" class="carousel-controls arrow-previous-btn">
+                    <svg class="svg-arrow" data-slide-target="prev">
+                        <polyline points="21 30 8 15 21 0" fill="none"></polyline>
+                    </svg>
+                </button>
+
+                <sly data-sly-list.news="${cards.news}">
+                    <div data-slide-area>
+                        <div data-slide-item class="carousel-item carousel-post">
+                            <a href="${news.link}" class="post-link">
+                                <div class="post">
+                                    <div class="post-container">
+                                        <div class="wrapper-post-title">
+                                            <h1 class="post-title">${news.title}</h1>
+                                        </div>
+                                        <div class="wrapper-post-text">
+                                            <p class="post-text">
+                                                ${news.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </sly>
+
+                <button data-slide-target="next" class="carousel-controls arrow-next-btn">
+                    <svg class="svg-arrow" data-slide-target="next">
+                        <polyline points="8 30 21 15 8 0" fill="none"></polyline>
+                    </svg>
+                </button>
+
+                <slide-carousel-dots class="carousel-dots-wrapper"></slide-carousel-dots>
+            </slide-carousel>
+        </div>
+    </sly>
+</sly>

@@ -27,6 +27,7 @@ use(function () {
 
     lang_menu.inputValue = CONST.PROP_INPUT_VALUE;
     lang_menu.default_lang = default_lang;
+
     return lang_menu;
 
 });

@@ -1,13 +1,9 @@
 package com.aem.exadel.service.impl;
 
-import com.aem.exadel.entity.DynamicCard;
 import com.aem.exadel.entity.News;
 import com.aem.exadel.service.RSSReader;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.annotations.Model;
-import org.osgi.service.component.annotations.Component;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;

@@ -1,0 +1,40 @@
+<sly data-sly-use.article="article-content.js">
+    <div class="img-container">
+        <img class="post-img" src="https://pp.userapi.com/c851036/v851036516/4d2b8/gYEfzuN1TIo.jpg"/>
+    </div>
+
+    <div class="full-post-container full-post-margin">
+
+        <div class="manual-Card">
+            <article class="post" onclick="location.href='TestPage.html';">
+                <a class="post-link" href="article.html">
+                    <div class="post-container">
+                        <div class="wrapper-post-title">
+                            <h1 class="post-title">${article.title}</h1>
+                        </div>
+
+                        <span class="post-date">${article.pubDate}</span>
+
+                        <div data-sly-resource="${'content' @ resourceType='wcm/foundation/components/parsys'}"></div>
+
+                        <div class="wrapper-post-text">
+                            <p>${article.content}</p>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        </div>
+
+
+        <div class="post-line"></div>
+        <ul class="group-nav-btn">
+            <li>
+                <a href="#" class="prev-btn link"><label-i18n>Previous</label-i18n></a>
+            </li>
+            <li class="paging-separator">|</li>
+            <li>
+                <a href="#" class="next-btn link"><label-i18n>Next</label-i18n></a>
+            </li>
+        </ul>
+    </div>
+</sly>

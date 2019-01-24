@@ -30,10 +30,15 @@ public class DynamicCardRestComponent extends WCMUsePojo {
             return;
         }
 
+        card = createCard(link);
+    }
+
+    public static DynamicCard createCard(String link) {
         RSSReader rssReader = new RSSReaderImpl(link);
 
-        card = new DynamicCard();
+        DynamicCard card = new DynamicCard();
         List<News> news = rssReader.readFeed();
         card.setNews(news);
+        return card;
     }
 }

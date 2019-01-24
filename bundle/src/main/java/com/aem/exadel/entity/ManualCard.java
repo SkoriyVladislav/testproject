@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class ManualCard {
+public class ManualCard implements Card{
     private CardType cardType = CardType.MANUAL;
     private List<News> news;
 }

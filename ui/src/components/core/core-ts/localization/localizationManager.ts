@@ -1,4 +1,4 @@
-import API from "../API";
+import API from "./localizationService";
 
 let instance: LocalizationManager;
 

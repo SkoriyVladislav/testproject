@@ -1,4 +1,4 @@
-import Localization, {LocationObserver} from "./localization";
+import Localization, {LocationObserver} from "./localizationManager";
 
 class LabelI18n extends HTMLElement implements LocationObserver{
     static get is() {

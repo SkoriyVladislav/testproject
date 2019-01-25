@@ -1,8 +1,8 @@
-import * as paths from "../../../../paths/config-paths";
+import * as paths from "../../../../../paths/config-paths";
 
-const API = {
+const LocalizationService = {
     async sendRequest(path: string) {
-        return await fetch(`${paths.URL_SERVER}assets/i18n/${path}.json`, {
+        return await fetch(`${paths.URL_SERVER}/assets/i18n/${path}.json`, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -20,4 +20,4 @@ const API = {
     }
 };
 
-export default API;
+export default LocalizationService;

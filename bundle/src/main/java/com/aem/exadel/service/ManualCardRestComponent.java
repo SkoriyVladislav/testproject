@@ -7,7 +7,6 @@ import com.aem.exadel.entity.News;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
@@ -21,7 +20,7 @@ import java.util.List;
 public class ManualCardRestComponent extends WCMUsePojo {
 
     protected static final String RESOURCE_TYPE = "TestProject/components/content/manual-Card";
-    private static final String LINK = "http://localhost:4502/%s.html?wcmmode=disabled";
+    private static final String LINK = "http://localhost:4502/|%s|?wcmmode=disabled";
     @Getter
     @Setter
     private ManualCard card;
@@ -36,22 +35,21 @@ public class ManualCardRestComponent extends WCMUsePojo {
         } else {
             return;
         }
+        ResourceResolver resourceResolver = getRequest().getResourceResolver();
+        Resource resource = resourceResolver.getResource(link + "/jcr:content/content/article/content");
 
-        /*ResourceResolver resourceResolver = getRequest().getResourceResolver();
-        Resource resource = resourceResolver.getResource(link + "/jcr:content/content/full_post_wrapper");
-
-        //manualCard = resource.adaptTo(com.aem.exadel.entity.ManualCard.class);*/
-        card = createCard(getRequest(), link);
+        card = getCard(resource);
     }
 
-    private static ManualCard getCard(Resource resource, String link) {
+    private static ManualCard getCard(Resource resource) {
         if (resource != null) {
             News news = new News();
             ValueMap valueMap = resource.getValueMap();
 
             news.setTitle(valueMap.get("./jcr:title").toString());
             news.setDescription(valueMap.get("./jcr:description").toString());
-            news.setLink(String.format(LINK, link.substring(1)));
+            String str = valueMap.get("./jcr:url").toString();
+            news.setLink("link");
             news.setPubDate(valueMap.get("./jcr:pubDate").toString());
 
             ManualCard manualCard = new ManualCard();
@@ -63,9 +61,4 @@ public class ManualCardRestComponent extends WCMUsePojo {
         return null;
     }
 
-    public static ManualCard createCard(SlingHttpServletRequest request, String link) {
-        ResourceResolver resourceResolver = request.getResourceResolver();
-        Resource resource = resourceResolver.getResource(link + "/jcr:content/content/full_post_wrapper");
-        return getCard(resource, link);
-    }
 }

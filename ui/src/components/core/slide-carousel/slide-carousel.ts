@@ -7,6 +7,20 @@ class SlideCarousel extends HTMLElement {
         super();
     }
 
+    private connectedCallback() {
+        this.classList.add('slide-carousel');
+        this.dataset.firstActiveIndex ? this.activeIndex = +this.dataset.firstActiveIndex - 1 : this.activeIndex = 0;
+        this.bindEvents();
+    }
+
+    private disconnectedCallback() {
+        this.removeEventListener('click', this._onClick, false);
+    }
+
+    private bindEvents() {
+        this.addEventListener('click', (event) => this._onClick(event), false);
+    }
+
     get activeClass() {
         return this.getAttribute('active-slide-class') || 'active-slide';
     }
@@ -26,14 +40,13 @@ class SlideCarousel extends HTMLElement {
         const copyNumNextSlide = numNextSlide;
         numNextSlide = (numNextSlide + this.slides.length) % this.slides.length;
 
-        this._cleanAnimationClasses();
-        if (copyNumNextSlide > this.activeIndex) {
-            this.slides[numNextSlide].classList.add('left');
-        } else {
-            this.slides[numNextSlide].classList.add('right');
-        }
-
         if (this.activeIndex !== -1) {
+            this._cleanAnimationClasses();
+            if (copyNumNextSlide > this.activeIndex) {
+                this.slides[numNextSlide].classList.add('left');
+            } else {
+                this.slides[numNextSlide].classList.add('right');
+            }
             this.slides[this.activeIndex].classList.remove(this.activeClass);
         }
         this.slides[numNextSlide].classList.add(this.activeClass);
@@ -44,16 +57,6 @@ class SlideCarousel extends HTMLElement {
     get slides(): HTMLElement[] {
         const els = this.querySelectorAll('[data-slide-item]') as NodeListOf<HTMLDivElement>;
         return els ? Array.from(els) : [];
-    }
-
-    private connectedCallback() {
-        this.classList.add('slide-carousel');
-        this.dataset.firstActiveIndex ? this.activeIndex = +this.dataset.firstActiveIndex - 1: this.activeIndex = 0;
-        this.bindEvents();
-    }
-
-    private bindEvents() {
-        this.addEventListener('click', (event) => this._onClick(event), false);
     }
 
     private _onClick(event: MouseEvent) {

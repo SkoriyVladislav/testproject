@@ -2,8 +2,12 @@ import VideoService from "./video-service";
 
 class VideoTrigger {
 
-    constructor(link: HTMLElement) {
-        link.addEventListener('click', (event) => this._onShow(event), false);
+    constructor(public link: HTMLElement) {
+        link.addEventListener('click', this._onShow, false);
+    }
+
+    destroy() {
+        this.link.removeEventListener('click', this._onShow, false);
     }
 
     private _onShow(event: MouseEvent) {

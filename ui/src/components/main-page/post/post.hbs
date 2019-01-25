@@ -8,7 +8,7 @@
                 <span class="post-date">{{var.date}}</span>
 
                 <div class="wrapper-post-text">
-                    <object><a href="{{var.link}}">{{var.textLink}}</a></object>
+                    <object><a href="{{var.link}}" is="video-link">{{var.textLink}}</a></object>
                     {{#each var.text}}
                         <p>
                             {{this}}
@@ -16,11 +16,8 @@
                         <p>&nbsp;</p>
                     {{/each}}
                 </div>
-                <!--<span class="read-pull-post">Читать статью ►</span>-->
             </div>
         </a>
-
-        {{> share-menu var=var.num}}
+        {{> share-bar var=var.num}}
     </article>
 </div>
-
